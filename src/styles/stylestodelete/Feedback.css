@@ -1,0 +1,271 @@
+/* Feedback Management Pages */
+.feedback-management-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Feedback List */
+.feedback-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.feedback-item {
+  background: var(--component-bg);
+  border: 1px solid var(--border-color);
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px var(--shadow-color);
+  transition: all 0.3s ease;
+}
+
+.feedback-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.feedback-user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.feedback-user {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.feedback-role {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.feedback-date {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.feedback-message {
+  color: var(--text-primary);
+  line-height: 1.6;
+  margin: 1rem 0;
+}
+
+.feedback-rating {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.rating-stars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.star {
+  color: #fbbf24;
+  font-size: 1.5rem;
+  line-height: 1;
+  display: block;
+}
+
+.star.empty {
+  color: #d1d5db;
+}
+
+.rating-value {
+  margin-bottom: 1rem;
+}
+
+.feedback-content {
+  margin-top: 0;
+  color: var(--text-primary);
+  line-height: 1.7;
+  font-size: 1rem;
+  white-space: pre-wrap;
+}
+
+/* Feedback Form */
+.feedback-form {
+  background: var(--bg-secondary);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.feedback-form textarea {
+  background: var(--component-bg);
+  border: 1px solid var(--border-color);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  min-height: 120px;
+  resize: vertical;
+  transition: all 0.3s ease;
+}
+
+.feedback-form textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+.rating-selector {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.rating-button {
+  background: var(--component-bg);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.rating-button:hover,
+.rating-button.active {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.submit-feedback {
+  background: var(--primary-color);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-feedback:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Loading State Styles */
+.submit-feedback.loading {
+  position: relative;
+  padding-left: 2.5rem;
+}
+
+.submit-feedback.loading::before {
+  content: "";
+  position: absolute;
+  left: 1rem;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Filter Section */
+.filter-section {
+  margin-bottom: 2rem;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.filter-button {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: 2px solid var(--border-color);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-button.active {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+/* Retry Button Styles */
+.retry-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
+  border-radius: 0.375rem;
+  background-color: var(--bg-primary);
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  transition: all 0.2s ease;
+}
+
+.retry-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* Retry Count Badge */
+.retry-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.5rem;
+  height: 1.5rem;
+  padding: 0 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 9999px;
+  margin-left: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .filter-section .flex {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .filter-section button {
+    width: 100%;
+  }
+
+  .feedback-management-page {
+    padding: 1rem;
+  }
+}

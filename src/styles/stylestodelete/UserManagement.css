@@ -1,0 +1,226 @@
+.user-management {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  background: var(--background-color);
+  min-height: 100vh;
+  transition: all 0.3s ease;
+}
+
+.user-management-container {
+  padding: 20px;
+  background-color: var(--background-color);
+}
+
+/* Header Section */
+.management-header {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.management-header h2 {
+  color: #1a365d;
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.management-header h2::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #4299e1, #667eea);
+  border-radius: 2px;
+}
+
+/* Tab Navigation */
+.user-tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.tab-button {
+  font-size: 1rem;
+  padding: 0.7em 1.2em;
+  border-radius: 0.5em;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  overflow: hidden;
+  background: #ffffff;
+  color: #2c3e50;
+}
+
+.tab-button:hover {
+  background: #f8fafc;
+  color: #3498db;
+}
+
+.tab-button.active {
+  background: #3498db;
+  color: white;
+}
+
+/* Table Styles */
+.user-table {
+  width: 100%;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+  border-collapse: collapse;
+}
+
+.user-table th {
+  background: #2d3748;
+  color: white;
+  padding: 1.2rem 1rem;
+  text-align: left;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.user-table td {
+  padding: 1.2rem 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  color: #4a5568;
+}
+
+.user-table tr:last-child td {
+  border-bottom: none;
+}
+
+.user-table tr:hover {
+  background: #f7fafc;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.action-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+}
+
+.edit-btn {
+  background: #4299e1;
+  color: white;
+}
+
+.btn-edit {
+  background: #3498db;
+  color: white;
+}
+
+.edit-button {
+  background-color: #3498db;
+  color: white;
+}
+
+.upgrade-btn {
+  background: #48bb78;
+  color: white;
+}
+
+.btn-upgrade {
+  background: #27ae60;
+  color: white;
+}
+
+.deactivate-btn {
+  background: #f56565;
+  color: white;
+}
+
+.btn-deactivate {
+  background: #e74c3c;
+  color: white;
+}
+
+.delete-button {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.action-btn:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.375rem;
+  background: #ffffff;
+  color: #2c3e50;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .user-management {
+    padding: 1rem;
+  }
+
+  .tab-button {
+    width: 100%;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .action-btn {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .user-table {
+    display: block;
+    overflow-x: auto;
+  }
+}

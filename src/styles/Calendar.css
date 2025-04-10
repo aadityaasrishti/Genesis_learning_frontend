@@ -1,0 +1,245 @@
+.calendar-container {
+  padding: 20px;
+  background: var(--background-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  min-height: 600px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* MUI DateCalendar styles */
+.mini-calendar {
+  background: var(--background-color);
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.mini-calendar .MuiPickersDay-root {
+  font-size: 0.9rem;
+  margin: 2px;
+}
+
+.mini-calendar .MuiPickersDay-root.highlighted-day {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.mini-calendar .MuiPickersDay-root.highlighted-day:hover {
+  background-color: var(--primary-hover-color);
+}
+
+.mini-calendar .MuiPickersDay-today {
+  border: 1px solid var(--primary-color);
+}
+
+.calendar-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.calendar-event {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  margin: 1px 0;
+  cursor: pointer;
+}
+
+.calendar-event.holiday {
+  background-color: #ff4444 !important;
+  border: 1px solid #cc0000;
+  font-weight: bold;
+}
+
+.calendar-event.extra-class {
+  background-color: #4caf50 !important;
+  border: 1px solid #388e3c;
+}
+
+.calendar-event.assignment {
+  background-color: #2196f3 !important;
+  border: 1px solid #1976d2;
+}
+
+.calendar-event.assignment.submitted {
+  background-color: #4caf50 !important;
+  border: 1px solid #388e3c;
+}
+
+.calendar-event.assignment.overdue {
+  background-color: #ff9800 !important; /* Changed to orange */
+  border: 1px solid #f57c00;
+  animation: pulse 2s infinite;
+}
+
+.calendar-event.exam {
+  background-color: #e91e63 !important;
+  border: 1px solid #c2185b;
+  font-weight: bold;
+  padding: 4px 8px;
+}
+
+.calendar-event.exam {
+  padding: 4px 8px;
+  margin: 2px 0;
+  border-radius: 4px;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.calendar-event.exam:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.calendar-event.exam .event-title {
+  font-size: 1em;
+  margin-bottom: 2px;
+}
+
+.calendar-event.exam .event-subject {
+  font-size: 0.85em;
+  opacity: 0.9;
+  margin-top: 2px;
+}
+
+.calendar-event.exam .event-subject::before {
+  content: "📄";
+  margin-right: 4px;
+  opacity: 0.8;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.event-title {
+  font-weight: 600;
+  margin-bottom: 2px;
+  color: #ffffff;
+}
+
+.event-teacher {
+  font-size: 0.8em;
+  opacity: 0.9;
+  color: #ffffff;
+}
+
+.event-description {
+  font-size: 0.8em;
+  opacity: 0.9;
+  color: #ffffff;
+  margin-top: 2px;
+}
+
+/* FullCalendar customization */
+.fc {
+  --fc-border-color: #dee2e6;
+  --fc-button-bg-color: #2563eb;
+  --fc-button-border-color: #2563eb;
+  --fc-button-hover-bg-color: #1d4ed8;
+  --fc-button-hover-border-color: #1d4ed8;
+  --fc-today-bg-color: rgba(37, 99, 235, 0.1);
+  --fc-event-border-color: transparent;
+  height: 100% !important;
+  min-height: 500px;
+}
+
+.fc .fc-view-harness {
+  height: 500px !important;
+}
+
+.fc .fc-daygrid-day-events {
+  margin-top: 4px;
+}
+
+.fc .fc-daygrid-event {
+  white-space: normal;
+  align-items: flex-start;
+  margin: 2px 4px;
+}
+
+.fc-theme-standard th,
+.fc-theme-standard td {
+  border-color: #dee2e6;
+}
+
+/* Event hover effect */
+.calendar-event:hover {
+  filter: brightness(110%);
+  transform: translateY(-1px);
+  transition: all 0.2s ease;
+}
+
+.calendar-loading,
+.calendar-error {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border-radius: 8px;
+}
+
+.calendar-error {
+  color: #ff4444;
+  text-align: center;
+  padding: 20px;
+  font-size: 1.1em;
+}
+
+/* Today highlight */
+.fc .fc-day-today {
+  background-color: rgba(37, 99, 235, 0.1) !important;
+  opacity: 0.8;
+}
+
+/* Header styling */
+.fc .fc-toolbar-title {
+  font-size: 1.5em;
+  color: #212529;
+}
+
+.fc .fc-button-primary {
+  background-color: #2563eb;
+  border-color: #2563eb;
+  transition: all 0.2s ease;
+}
+
+.fc .fc-button-primary:hover {
+  background-color: #1d4ed8;
+  border-color: #1d4ed8;
+}
+
+/* Tooltip styling */
+.calendar-tooltip {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  pointer-events: none;
+  z-index: 1000;
+  max-width: 300px;
+}

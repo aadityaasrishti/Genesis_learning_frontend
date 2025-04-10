@@ -1,0 +1,225 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Navigation Bar */
+nav {
+  background: #333;
+  color: white;
+  padding: 15px 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+nav .nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+nav .nav-links a {
+  color: white;
+  text-decoration: none;
+}
+
+nav .auth-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+nav .signin-button,
+nav .signup-button {
+  padding: 8px 16px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+}
+
+nav .signin-button {
+  background: #ffffff;
+  color: white;
+  border: 2px solid white;
+}
+
+nav .signin-button:hover {
+  background: white;
+  color: #333;
+}
+
+nav .signup-button {
+  background: #ffc107;
+  color: black;
+  border: 2px solid #ffc107;
+}
+
+nav .signup-button:hover {
+  background: #e0a800;
+  border-color: #e0a800;
+}
+
+/* Hero Section */
+.hero {
+  background: #4caf50;
+  color: white;
+  padding: 150px 0;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin: 20px 0;
+}
+
+.cta-button {
+  background: #ffc107;
+  color: black;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+  margin: 10px;
+}
+
+/* Study Tools Section */
+.study-tools {
+  padding: 50px 0;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.tool-card {
+  background: #f4f4f4;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* Study Timer */
+.study-timer {
+  background: #2196f3;
+  color: white;
+  padding: 50px 0;
+  text-align: center;
+}
+
+.timer {
+  font-size: 2rem;
+  margin: 20px 0;
+}
+
+#start-timer {
+  background: #ffc107;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Testimonials */
+.testimonials {
+  padding: 50px 0;
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.testimonial-card {
+  background: #f4f4f4;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+/* Pricing Section */
+.pricing {
+  padding: 50px 0;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.pricing-card {
+  background: #f4f4f4;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* FAQ Section */
+.faq {
+  padding: 50px 0;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.faq-card {
+  background: #f4f4f4;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+/* Footer */
+footer {
+  background: #333;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.social-links a {
+  color: #ffc107;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .tools-grid,
+  .testimonial-grid,
+  .pricing-grid,
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+}

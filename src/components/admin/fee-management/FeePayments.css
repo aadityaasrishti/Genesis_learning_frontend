@@ -1,0 +1,43 @@
+.filters-container {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.filter-group {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.filter-group .form-input,
+.filter-group .form-select {
+  min-width: 200px;
+  max-width: 250px;
+}
+
+.filter-group input[type="date"] {
+  min-width: 150px;
+}
+
+@media (max-width: 768px) {
+  .filter-group .form-input,
+  .filter-group .form-select {
+    min-width: 100%;
+  }
+}
+
+/* Export buttons styling */
+.header-actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.header-actions button {
+  white-space: nowrap;
+}

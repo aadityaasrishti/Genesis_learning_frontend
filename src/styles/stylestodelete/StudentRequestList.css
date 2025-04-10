@@ -1,0 +1,178 @@
+.student-request-list {
+  padding: 1rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.filter-container {
+  margin-bottom: 1rem;
+}
+
+.status-filter {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  width: 200px;
+}
+
+.requests-container {
+  display: grid;
+  gap: 1.5rem;
+  max-height: 600px;
+  overflow-y: auto;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+}
+
+.request-card {
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.request-card:hover {
+  transform: translateY(-2px);
+}
+
+.request-card h3 {
+  margin: 0 0 0.5rem 0;
+  color: var(--text-color);
+  font-size: 1.2rem;
+}
+
+.student-name {
+  color: var(--text-color-secondary);
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+}
+
+.description {
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.request-details {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.status {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.status.pending {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.status.approved {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status.rejected {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.type {
+  color: var(--text-color-secondary);
+  background-color: var(--background-color-light);
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+}
+
+.date {
+  color: var(--text-color-secondary);
+}
+
+.image-container {
+  margin: 1rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 300px;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+}
+
+.admin-actions {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.status-select {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  width: 150px;
+  cursor: pointer;
+}
+
+.delete-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.2s ease;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}
+
+.loading,
+.no-requests,
+.error-message {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-color);
+}
+
+.error-message {
+  color: #dc3545;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.request-card.highlight-request {
+  animation: highlight-pulse 2s ease-in-out;
+  border: 2px solid var(--primary-color);
+}
+
+.notification-item {
+  cursor: pointer;
+}
+
+.notification-item[data-type="teacher_task"],
+.notification-item[data-type="task_update"],
+.notification-item[data-type="student_request"],
+.notification-item[data-type="student_request_update"] {
+  background-color: var(--background-color-light);
+}

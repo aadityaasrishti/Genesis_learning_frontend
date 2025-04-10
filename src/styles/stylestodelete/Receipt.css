@@ -1,0 +1,108 @@
+.receipt-details {
+  background-color: #f8fafc;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.receipt-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.receipt-row:last-child {
+  border-bottom: none;
+}
+
+.receipt-label {
+  color: #64748b;
+  font-weight: 500;
+  flex: 0 0 40%;
+}
+
+.receipt-value {
+  color: #1e293b;
+  font-weight: 600;
+  text-align: right;
+  flex: 0 0 60%;
+}
+
+.receipt-heading {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.receipt-subheading {
+  font-size: 1rem;
+  color: #64748b;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.receipt-school-info {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.receipt-school-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+}
+
+.receipt-school-address {
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+.receipt-divider {
+  height: 1px;
+  background-color: #e2e8f0;
+  margin: 1.5rem 0;
+}
+
+.receipt-footer {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.receipt-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  font-size: 4rem;
+  color: rgba(203, 213, 225, 0.2);
+  pointer-events: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Print styles */
+@media print {
+  .receipt-details {
+    background-color: white;
+    padding: 0;
+  }
+
+  .modal-footer {
+    display: none;
+  }
+
+  .modal-close {
+    display: none;
+  }
+
+  .receipt-watermark {
+    display: block;
+  }
+}
