@@ -9,9 +9,8 @@ export const apiClient = axios.create({
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
-  },
-  timeout: TIMEOUT,
-  withCredentials: import.meta.env.VITE_SECURE_COOKIES || true,
+  },  timeout: TIMEOUT,
+  withCredentials: true,
   proxy: false,
 });
 
