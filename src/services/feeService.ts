@@ -32,7 +32,7 @@ export async function getFeeStructures() {
 
 // Create new fee structure
 export async function createFeeStructure(data: CreateFeeStructureInput) {
-  const response = await api.post("/fees/structures", data);
+  const response = await api.post("/fees/structure", data);
   return response.data;
 }
 
