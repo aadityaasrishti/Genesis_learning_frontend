@@ -1,0 +1,9 @@
+/*
+  This is a Netlify headers file. DO NOT use JS-style comments.
+*/
+
+/*
+  Route: All files
+*/
+* 
+  Content-Security-Policy: default-src 'self' blob: data: https:; object-src 'self'; frame-src 'self' blob: https://*.readyplayer.me; img-src 'self' blob: data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://genesislearningbackend-production.up.railway.app;
