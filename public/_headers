@@ -1,13 +1,10 @@
 /*
-  Route: All files
-*/
-*  
-  Content-Security-Policy: default-src 'self' blob: data: https:; 
-    connect-src 'self' https://genesislearningbackend-production.up.railway.app https://genesislearning.netlify.app; 
-    script-src 'self' 'unsafe-inline' 'unsafe-eval'; 
-    style-src 'self' 'unsafe-inline'; 
-    img-src 'self' blob: data: https:; 
-    frame-src 'self' blob: https://*.readyplayer.me; 
+  Content-Security-Policy: default-src 'self' blob: data: https:;
+    connect-src 'self' https://genesislearningbackend-production.up.railway.app https://genesislearning.netlify.app;
+    script-src 'self' 'unsafe-inline' 'unsafe-eval';
+    style-src 'self' 'unsafe-inline';
+    img-src 'self' blob: data: https:;
+    frame-src 'self' blob: https://*.readyplayer.me;
     object-src 'self';
   Referrer-Policy: strict-origin-when-cross-origin
   X-Content-Type-Options: nosniff
