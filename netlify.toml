@@ -13,3 +13,9 @@
     base-uri 'self';
     form-action 'self';
   '''
+
+# netlify.toml
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
