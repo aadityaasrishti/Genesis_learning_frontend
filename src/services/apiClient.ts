@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = '/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "/api";
 const MAX_RETRIES = import.meta.env.VITE_MAX_RETRIES || 3;
 const TIMEOUT = import.meta.env.VITE_API_TIMEOUT || 20000;
 
