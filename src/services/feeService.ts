@@ -38,7 +38,7 @@ export async function createFeeStructure(data: CreateFeeStructureInput) {
 
 // Delete fee structure
 export async function deleteFeeStructure(id: number) {
-  const response = await api.delete(`/fees/structures/${id}`);
+  const response = await api.delete(`/fees/structure/${id}`);
   return response.data;
 }
 
