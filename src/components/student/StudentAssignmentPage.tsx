@@ -89,18 +89,21 @@ const StudentAssignmentPage: React.FC = () => {
     }
 
     try {
-      const filename = fileUrl.split("/").pop();
-      if (!filename) {
-        throw new Error("Invalid file URL");
+      // If it's already a Supabase URL, use it directly
+      if (fileUrl.includes("supabase")) {
+        window.open(fileUrl, "_blank");
+        return;
       }
-      const response = await api.get(`/assignments/download/${filename}`, {
+
+      // For legacy URLs, try to get the file through the API
+      const response = await api.get(fileUrl, {
         responseType: "blob",
       });
 
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement("a");
       link.href = url;
-      link.setAttribute("download", filename);
+      link.setAttribute("download", fileUrl.split("/").pop() || "download");
       document.body.appendChild(link);
       link.click();
       link.remove();

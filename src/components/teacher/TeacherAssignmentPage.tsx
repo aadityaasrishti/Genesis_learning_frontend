@@ -272,7 +272,11 @@ const SubmissionModal = ({ submission, onClose }: SubmissionModalProps) => {
                   {submission.file_url.toLowerCase().endsWith(".pdf") ? (
                     <Box sx={{ height: "500px", mt: 2 }}>
                       <iframe
-                        src={`/api${submission.file_url}`}
+                        src={
+                          submission.file_url.includes("supabase")
+                            ? submission.file_url
+                            : `/api${submission.file_url}`
+                        }
                         style={{
                           width: "100%",
                           height: "100%",
@@ -286,7 +290,7 @@ const SubmissionModal = ({ submission, onClose }: SubmissionModalProps) => {
                       variant="outlined"
                       startIcon={<DownloadIcon />}
                       onClick={() =>
-                        window.open(`/api${submission.file_url}`, "_blank")
+                        window.open(submission.file_url!, "_blank")
                       }
                       sx={{ mt: 1 }}
                     >
@@ -521,13 +525,44 @@ const TeacherAssignmentPage = () => {
     }
   };
 
-  // Cleanup preview URL when component unmounts or file changes
-  useEffect(() => {
-    return () => {
-      if (pdfPreviewUrl) {
-        URL.revokeObjectURL(pdfPreviewUrl);
+  const handleFileDownload = async (fileUrl: string) => {
+    try {
+      // For Supabase URLs, open directly in new tab
+      if (fileUrl.includes("supabase")) {
+        window.open(fileUrl, "_blank");
+        return;
       }
-    };
+
+      // For legacy URLs, download through API
+      const response = await api.get(fileUrl, {
+        responseType: "blob",
+      });
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", fileUrl.split("/").pop() || "download");
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("Error downloading file:", error);
+      alert("Error downloading file. Please try again.");
+    }
+  };
+
+  // Update file preview handling
+  useEffect(() => {
+    if (pdfPreviewUrl) {
+      // If it's a Supabase URL, use it directly for preview
+      if (pdfPreviewUrl.includes("supabase")) {
+        return;
+      }
+      // For legacy URLs, cleanup the object URL when component unmounts
+      return () => {
+        URL.revokeObjectURL(pdfPreviewUrl);
+      };
+    }
   }, [pdfPreviewUrl]);
 
   const viewSubmissions = async (assignmentId: number) => {
@@ -596,7 +631,14 @@ const TeacherAssignmentPage = () => {
   return (
     <Container maxWidth="xl">
       <Box sx={{ py: 3 }}>
-        <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 3 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            mb: 3,
+          }}
+        >
           <Typography variant="h4" component="h1">
             Assignment Management
           </Typography>
@@ -624,9 +666,9 @@ const TeacherAssignmentPage = () => {
             sx={{
               px: 3,
               py: 1,
-              fontWeight: 'bold',
+              fontWeight: "bold",
               boxShadow: 2,
-              '&:hover': {
+              "&:hover": {
                 boxShadow: 4,
               },
             }}
@@ -939,22 +981,28 @@ const TeacherAssignmentPage = () => {
                   )}
                 </Grid>
               </Grid>
-              <Box sx={{ mt: 4, display: 'flex', justifyContent: 'flex-end' }}>
+              <Box sx={{ mt: 4, display: "flex", justifyContent: "flex-end" }}>
                 <Button
                   type="submit"
                   variant="contained"
                   color="error"
                   size="large"
-                  disabled={!formData.title || !formData.description || !selectedClass || !selectedSubject || selectedStudents.length === 0}
+                  disabled={
+                    !formData.title ||
+                    !formData.description ||
+                    !selectedClass ||
+                    !selectedSubject ||
+                    selectedStudents.length === 0
+                  }
                   sx={{
-                    fontWeight: 'bold',
+                    fontWeight: "bold",
                     boxShadow: 2,
-                    '&:hover': {
+                    "&:hover": {
                       boxShadow: 4,
                     },
                   }}
                 >
-                  {isEditing ? 'Update Assignment' : 'Create Assignment'}
+                  {isEditing ? "Update Assignment" : "Create Assignment"}
                 </Button>
               </Box>
             </form>
@@ -992,6 +1040,17 @@ const TeacherAssignmentPage = () => {
                       />
                     )}
                   </Box>
+                  {assignment.file_url && (
+                    <Box sx={{ mt: 1, mb: 2 }}>
+                      <Button
+                        variant="outlined"
+                        startIcon={<DownloadIcon />}
+                        onClick={() => handleFileDownload(assignment.file_url!)}
+                      >
+                        Download Assignment PDF
+                      </Button>
+                    </Box>
+                  )}
                   <div className="submissions-info">
                     Total Submissions:{" "}
                     {assignment.submissions ? assignment.submissions.length : 0}

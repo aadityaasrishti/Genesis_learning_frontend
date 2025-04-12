@@ -73,30 +73,6 @@ const SubmissionModal: React.FC<SubmissionModalProps> = ({
     }
   };
 
-  const handleDownload = async (fileUrl: string) => {
-    try {
-      const filename = fileUrl.split("/").pop();
-      if (!filename) {
-        throw new Error("Invalid file URL");
-      }
-      const response = await api.get(`/assignments/download/${filename}`, {
-        responseType: "blob",
-      });
-
-      const url = window.URL.createObjectURL(new Blob([response.data]));
-      const link = document.createElement("a");
-      link.href = url;
-      link.setAttribute("download", filename);
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-      window.URL.revokeObjectURL(url);
-    } catch (error) {
-      console.error("Error downloading file:", error);
-      alert("Error downloading file. Please try again.");
-    }
-  };
-
   return (
     <Dialog open={true} onClose={onClose} maxWidth="lg" fullWidth>
       <DialogTitle>
@@ -268,28 +244,34 @@ const SubmissionModal: React.FC<SubmissionModalProps> = ({
                   <Typography variant="h6" gutterBottom color="primary">
                     Submitted File
                   </Typography>
-                  {pdfPreviewUrl && (
-                    <Box sx={{ width: "100%", height: "500px", mb: 2 }}>
+                  {submission.file_url.toLowerCase().endsWith(".pdf") ? (
+                    <Box sx={{ height: "500px", mt: 2 }}>
                       <iframe
-                        src={pdfPreviewUrl}
+                        src={
+                          submission.file_url.includes("supabase")
+                            ? submission.file_url
+                            : `/api${submission.file_url}`
+                        }
                         style={{
                           width: "100%",
                           height: "100%",
-                          border: "1px solid rgba(0, 0, 0, 0.12)",
-                          borderRadius: "4px",
+                          border: "none",
                         }}
                         title="PDF Preview"
                       />
                     </Box>
+                  ) : (
+                    <Button
+                      variant="outlined"
+                      startIcon={<DownloadIcon />}
+                      onClick={() =>
+                        window.open(submission.file_url!, "_blank")
+                      }
+                      sx={{ mt: 1 }}
+                    >
+                      Download Submission
+                    </Button>
                   )}
-                  <Button
-                    variant="outlined"
-                    startIcon={<DownloadIcon />}
-                    onClick={() => handleDownload(submission.file_url!)}
-                    sx={{ mt: 1 }}
-                  >
-                    Download Submission
-                  </Button>
                 </Paper>
               </Grid>
             )}
@@ -468,28 +450,15 @@ const AdminAssignmentView: React.FC = () => {
     }
   };
 
-  const handleDownload = async (fileUrl: string) => {
-    try {
-      const filename = fileUrl.split("/").pop();
-      if (!filename) {
-        throw new Error("Invalid file URL");
-      }
-      const response = await api.get(`/assignments/download/${filename}`, {
-        responseType: "blob",
-      });
-
-      const url = window.URL.createObjectURL(new Blob([response.data]));
-      const link = document.createElement("a");
-      link.href = url;
-      link.setAttribute("download", filename);
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-      window.URL.revokeObjectURL(url);
-    } catch (error) {
-      console.error("Error downloading file:", error);
-      alert("Error downloading file. Please try again.");
+  const handleDownloadFile = (fileUrl: string) => {
+    // For Supabase URLs, open directly in a new tab
+    if (fileUrl.includes("supabase")) {
+      window.open(fileUrl, "_blank");
+      return;
     }
+
+    // For legacy URLs, download through API
+    window.open(`/api${fileUrl}`, "_blank");
   };
 
   const handleViewSubmissionFromList = async (studentId: number) => {
@@ -640,7 +609,9 @@ const AdminAssignmentView: React.FC = () => {
                         <Button
                           variant="outlined"
                           startIcon={<DownloadIcon />}
-                          onClick={() => handleDownload(assignment.file_url!)}
+                          onClick={() =>
+                            handleDownloadFile(assignment.file_url!)
+                          }
                         >
                           Download Assignment PDF
                         </Button>
