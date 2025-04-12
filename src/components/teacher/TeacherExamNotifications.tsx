@@ -45,34 +45,9 @@ const TeacherExamNotifications: React.FC = () => {
       setLoading(false);
     }
   };
-
-  const handleDownload = async (syllabusUrl: string) => {
-    try {
-      const filename = syllabusUrl.split("/").pop();
-      if (!filename) {
-        throw new Error("Invalid file URL");
-      }
-
-      const response = await api.get(
-        `/exam-notifications/download/${filename}`,
-        {
-          responseType: "blob",
-        }
-      );
-
-      const blob = new Blob([response.data]);
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = filename;
-      document.body.appendChild(a);
-      a.click();
-      window.URL.revokeObjectURL(url);
-      document.body.removeChild(a);
-    } catch (err) {
-      console.error("Error downloading file:", err);
-      setError("Failed to download syllabus file");
-    }
+  const handleDownload = (syllabusUrl: string) => {
+    // Open the Supabase URL directly in a new tab
+    window.open(syllabusUrl, "_blank");
   };
 
   return (
