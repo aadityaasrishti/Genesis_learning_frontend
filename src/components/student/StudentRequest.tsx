@@ -92,7 +92,7 @@ const StudentRequest: React.FC<StudentRequestProps> = ({
         formData.append("file", selectedFile);
       }
 
-      await api.post("/student/requests", formData, {
+      await api.post("/taskRoutes/student/requests", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

@@ -76,8 +76,8 @@ const StudentRequestList = ({
       setError(null);
       const endpoint =
         userRole === "admin" || userRole === "support_staff"
-          ? "/student/requests/all"
-          : "/student/requests";
+          ? "/taskRoutes/student/requests/all"
+          : "/taskRoutes/student/requests";
 
       const response = await api.get(endpoint);
       setRequests(response.data);
@@ -123,7 +123,7 @@ const StudentRequestList = ({
   const handleStatusUpdate = async (requestId: number, newStatus: string) => {
     try {
       setError(null);
-      await api.patch(`/student/requests/${requestId}/status`, {
+      await api.patch(`/taskRoutes/student/requests/${requestId}/status`, {
         status: newStatus.toUpperCase(),
       });
       await fetchRequests();
@@ -139,7 +139,7 @@ const StudentRequestList = ({
     if (window.confirm("Are you sure you want to delete this request?")) {
       try {
         setError(null);
-        await api.delete(`/student/requests/${requestId}`);
+        await api.delete(`/taskRoutes/student/requests/${requestId}`);
         await fetchRequests();
       } catch (error: any) {
         setError(
