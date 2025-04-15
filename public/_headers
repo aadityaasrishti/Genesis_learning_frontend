@@ -1,12 +1,12 @@
 /*
   Content-Security-Policy: 
     default-src 'self' blob: data: https:;
-    connect-src 'self' https://genesislearningbackend-production.up.railway.app https://*.supabase.co https://*.supabase.io;
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' 'strict-dynamic';
+    connect-src 'self' https://genesislearningbackend-production.up.railway.app https://genesislearning.netlify.app https://*.supabase.co https://*.supabase.io;
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' 'strict-dynamic' https:;
     style-src 'self' 'unsafe-inline' https:;
-    img-src 'self' data: blob: https:;
+    img-src 'self' blob: data: https:;
     font-src 'self' https: data:;
-    frame-src 'self' https: blob: https://*.readyplayer.me;
+    frame-src 'self' blob: https://*.readyplayer.me;
     object-src 'none';
     base-uri 'self';
     form-action 'self';
